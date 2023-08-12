@@ -13,21 +13,21 @@ int main(void)
 		while (j <= '9')
 		{
 			if (!(i > j) || (i == j))
-					{
-					putchar (i);
-					putchar (j);
-					if (i == '8' & j == '9')
-						{
-						putchar ('\n');
-						}
-					else
-						{
-							putchar (',');
-							putchar (' ');
-						}
-					}
+			{
+				putchar (i);
+				putchar (j);
+				if (i == '8' && j == '9')
+				{
+					putchar ('\n');
+				}
+				else
+				{
+					putchar (',');
+					putchar (' ');
+				}
+			}
 			j++;
-		 }
+		}
 		j = '0';
 		i++;
 	}
