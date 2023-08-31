@@ -1,10 +1,10 @@
 #include "main.h"
 int helper_sqrt_recursion(int n, int i);
 /**
-  *helper_sqrt_recursion - returns the natural square root of a num
+  *_sqrt_recursion - returns the natural square root of a num
   *@n : num to caalculate sqrt of
   *
-  *Return : the resulting sqrt
+  * Return: the resulting square root
   */
 int _sqrt_recursion(int n)
 {
@@ -14,7 +14,7 @@ int _sqrt_recursion(int n)
 }
 
 /**
- * actual_sqrt_recursion - recurses to find the natural
+ * helper_sqrt_recursion - recurses to find the natural
  * square root of a number
  * @n: number to calculate the sqaure root of
  * @i: iterator
