@@ -1,4 +1,8 @@
 #bin/bash
-gcc -Wall -pedantic -Werror -Wextra *.c
-ar -rc liball.a *.c
+
+for file in *.c
+do
+  gcc -Wall -Werror -Wextra -pedantic -c "$file" -o "${file%.c}.o"
+done
+ar rcs liball.a *.o
 ranlib liball.a
