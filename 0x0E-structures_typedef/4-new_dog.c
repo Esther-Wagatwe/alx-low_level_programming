@@ -10,11 +10,27 @@ int _strlen(char *str)
 {
 	int i;
 
-	for (i = 0; str[i] != "\0"; i++)
+	for (i = 0; str[i] != '\0'; i++)
 		;
 	return (i);
 }
 
+/**
+  * _strcpy - copy string
+  * @s1: destination
+  * @s2: Origin
+  * Return: success s1
+  */
+char *_strcpy(char *s1, char *s2)
+{
+	int i, j = _strlen(s2) + 1;
+
+	for (i = 0; i < j; i++)
+	{
+		s1[i] = s2[i];
+	}
+	return (s1);
+}
 /**
  * new_dog - creates a new dog
  * @name: name of the dog
@@ -48,9 +64,9 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 
-	new_dog_ptr->name = name;
+	new_dog_ptr->name = _strcpy(new_dog_ptr->name, name);
 	new_dog_ptr->age = age;
-	new_dog_ptr->owner = owner;
+	new_dog_ptr->owner = _strcpy(new_dog_ptr->owner, owner);
 
 	return (new_dog_ptr);
 }
