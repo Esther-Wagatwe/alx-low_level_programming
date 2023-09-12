@@ -10,7 +10,7 @@ int _strlen(char *str)
 {
 	int i;
 
-	for (i = 0; str[i] != 0; i++)
+	for (i = 0; str[i] != "\0"; i++)
 		;
 	return (i);
 }
@@ -40,7 +40,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 
-	(*new_dog_ptr).owner = malloc(sizeof(char) * (_strlen(name) + 1));
+	(*new_dog_ptr).owner = malloc(sizeof(char) * (_strlen(owner) + 1));
 	if ((*new_dog_ptr).owner == NULL)
 	{
 		free((*new_dog_ptr).name);
