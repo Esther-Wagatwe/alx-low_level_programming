@@ -1,13 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "dog.h"
+/**
+  * _strlen - calculates length of string
+  * @str: string to check length
+  * Return: success i
+  */
 int _strlen(char *str)
 {
 	int i;
+
 	for (i = 0; str[i] != 0; i++)
 		;
 	return (i);
 }
+
 /**
  * new_dog - creates a new dog
  * @name: name of the dog
