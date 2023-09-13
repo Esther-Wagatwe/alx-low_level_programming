@@ -10,6 +10,8 @@
   */
 void print_name(char *name, void (*f)(char *))
 {
+	if (name == NULL || f == NULL)
+		return;
 	/* call the function pointer to print the name*/
 	f(name);
 }
