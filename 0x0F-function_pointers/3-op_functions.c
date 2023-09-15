@@ -1,7 +1,4 @@
-#include <stdio.h>
 #include "3-calc.h"
-#include <stdlib.h>
-#include <stdlib.h>
 /**
  * op_add - Returns the sum of two numbers.
  * @a: The first number.
