@@ -16,15 +16,15 @@ list_t *add_node_end(list_t **head, const char *str)
 	newnode_end = malloc(sizeof(list_t));
 	if (newnode_end == NULL)
 		return (NULL);
-	newnode_end-> str = strdup(str);
-	for(i = 0; str[i] != '\0'; i++)
+	newnode_end->str = strdup(str);
+	for (i = 0; str[i] != '\0'; i++)
 		count++;
 	newnode_end->len = count;
 	newnode_end->next = NULL;
 	/*store head in temporary*/
 	temp = *head;
 	/*if the list is empty,the new node becomes the head*/
-	if(temp == NULL)
+	if (temp == NULL)
 		*head = newnode_end;
 	else
 	{
