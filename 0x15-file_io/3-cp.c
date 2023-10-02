@@ -8,44 +8,47 @@
  * Return: 0 on success, and exits with error codes on failure.
  */
 
-int copyFile(const char *srcFilename, const char *destFilename) {
-    int srcFile, destFile;
-    char buffer[BUFFER_SIZE];
-    ssize_t bytesRead, bytesWritten;
+int copyFile(const char *srcFilename, const char *destFilename)
+{
+	int srcFile, destFile;
+	char buffer[BUFFER_SIZE];
+	ssize_t bytesRead, bytesWritten;
 
-    srcFile = open(srcFilename, O_RDONLY);
-    if (srcFile == -1) {
-        dprintf(2, "Error: Can't read from file %s\n", srcFilename);
-        exit(98);
-    }
+	srcFile = open(srcFilename, O_RDONLY);
+	if (srcFile == -1)
+	{
+		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
+		exit(98);
+	}
 
-    destFile = open(destFilename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    if (destFile == -1) {
-        dprintf(2, "Error: Can't write to file %s\n", destFilename);
-        exit(99);
-    }
+	destFile = open(destFilename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (destFile == -1)
+	{
+		dprintf(2, "Error: Can't write to file %s\n", destFilename);
+		exit(99);
+	}
 
-    while ((bytesRead = read(srcFile, buffer, BUFFER_SIZE)) > 0) {
-        bytesWritten = write(destFile, buffer, bytesRead);
-        if (bytesWritten != bytesRead) {
-            dprintf(2, "Error: Can't write to file %s\n", destFilename);
-            exit(99);
-        }
-    }
+	while ((bytesRead = read(srcFile, buffer, BUFFER_SIZE)) > 0)
+	{
+		bytesWritten = write(destFile, buffer, bytesRead);
+		if (bytesWritten != bytesRead)
+		{
+			dprintf(2, "Error: Can't write to file %s\n", destFilename);
+			exit(99);
+		}
+	}
+	if (bytesRead == -1)
+	{
+		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
+		exit(98);
+	}
+	if (close(srcFile) == -1 || close(destFile) == -1)
+	{
+		dprintf(2, "Error: Can't close file descriptors\n");
+		exit(100);
+	}
 
-    if (bytesRead == -1) 
-    {
-       dprintf(2, "Error: Can't read from file %s\n", srcFilename);
-       exit(98);
-    }
-
-    /* Close the file descriptors only once*/
-    if (close(srcFile) == -1 || close(destFile) == -1) {
-        dprintf(2, "Error: Can't close file descriptors\n");
-        exit(100);
-    }
-
-    return 0; /*Return 0 on success*/
+	return (0); /*Return 0 on success*/
 }
 
 /**
@@ -57,15 +60,14 @@ int copyFile(const char *srcFilename, const char *destFilename) {
  */
 int main(int argc, char *argv[])
 {
-    int result;
-    
-    if (argc != 3)
-    {
-        dprintf(2, "Usage: %s file_from file_to\n", argv[0]);
-        exit(97);
-    }
-    result = copyFile(argv[1], argv[2]);
+	int result;
 
-    return result;
+	if (argc != 3)
+	{
+		dprintf(2, "Usage: %s file_from file_to\n", argv[0]);
+		exit(97);
+	}
+	result = copyFile(argv[1], argv[2]);
+
+	return (result);
 }
-
