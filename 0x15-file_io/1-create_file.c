@@ -1,11 +1,10 @@
 #include "main.h"
-
 /**
-  * stringLength - function that calcuates string length
-  * @str: string whose length is to be calculated
-  * Return: length of the string
-  */
-
+ * stringLength - function that calculates string length
+ * @str: string whose length is to be calculated
+ *
+ * Return: length of the string
+ */
 int stringLength(const char *str)
 {
 	int length = 0;
