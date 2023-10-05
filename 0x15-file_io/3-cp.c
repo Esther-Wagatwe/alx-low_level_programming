@@ -15,12 +15,6 @@ int copyFile(const char *srcFilename, const char *destFilename)
 	ssize_t bytesRead, bytesWritten;
 
 	srcFile = open(srcFilename, O_RDONLY);
-	if (srcFile == -1)
-	{
-		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
-		exit(98);
-	}
-
 	destFile = open(destFilename, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (destFile == -1)
 	{
@@ -36,10 +30,9 @@ int copyFile(const char *srcFilename, const char *destFilename)
 			exit(99);
 		}
 	}
-	if (bytesRead == -1)
+	if (srcFile == -1 || bytesRead == -1)
 	{
-		/*dprintf(2, "Error: Can't read from file %s\n", srcFilename);*/
-		dprintf(STDERR_FILENO,"Error: Can't read from file %s\n", srcFilename);
+		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
 		exit(98);
 	}
 	if (close(srcFile) == -1)
@@ -47,11 +40,11 @@ int copyFile(const char *srcFilename, const char *destFilename)
 		dprintf(2, "Error: Can't close fd %d\n", srcFile);
 		exit(100);
 	}
-	 if (close(destFile) == -1)
-	 {
+	if (close(destFile) == -1)
+	{
 		 dprintf(2, "Error: Can't close fd %d\n", destFile);
 		  exit(100);
-	 }
+	}
 
 	return (0); /*Return 0 on success*/
 }
