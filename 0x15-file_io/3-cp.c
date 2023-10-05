@@ -31,7 +31,7 @@ int copyFile(const char *srcFilename, const char *destFilename)
 		}
 	}
 	if (srcFile == -1 || bytesRead == -1)
-	{
+	srcFile == -1{
 		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
 		exit(98);
 	}
@@ -42,8 +42,8 @@ int copyFile(const char *srcFilename, const char *destFilename)
 	}
 	if (close(destFile) == -1)
 	{
-		 dprintf(2, "Error: Can't close fd %d\n", destFile);
-		  exit(100);
+		dprintf(2, "Error: Can't close fd %d\n", destFile);
+		exit(100);
 	}
 
 	return (0); /*Return 0 on success*/
