@@ -19,7 +19,6 @@ int copyFile(const char *srcFilename, const char *destFilename)
 	if (destFile == -1)
 	{
 		dprintf(2, "Error: Can't write to %s\n", destFilename);
-		close(srcFile);
 		exit(99);
 	}
 	while ((bytesRead = read(srcFile, buffer, BUFFER_SIZE)) > 0)
@@ -28,16 +27,12 @@ int copyFile(const char *srcFilename, const char *destFilename)
 		if (bytesWritten == -1)
 		{
 			dprintf(2, "Error: Can't write to %s\n", destFilename);
-			close(srcFile);
-			close(destFile);
 			exit(99);
 		}
 	}
 	if (srcFile == -1 || bytesRead == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
-		close(srcFile);
-		close(destFile);
 		exit(98);
 	}
 	if (close(srcFile) == -1)
