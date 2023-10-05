@@ -27,7 +27,7 @@ int copyFile(const char *srcFilename, const char *destFilename)
 		dprintf(2, "Error: Can't write to file %s\n", destFilename);
 		exit(99);
 	}
-	if (chmod(destFilename, 0664) == -1)
+	if (fchmod(destFile, 0664) == -1)
 	{
 		dprintf(2, "Error: Can't set permissions for file %s\n", destFilename);
 		exit(99);
