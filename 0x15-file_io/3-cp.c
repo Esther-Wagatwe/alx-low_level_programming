@@ -15,11 +15,11 @@ int copyFile(const char *srcFilename, const char *destFilename)
 	ssize_t bytesRead, bytesWritten;
 
 	srcFile = open(srcFilename, O_RDONLY);
-	if (srcFile == -1)
+	/*if (srcFile == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
 		exit(98);
-	}
+	}*/
 
 	destFile = open(destFilename, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (destFile == -1)
@@ -36,7 +36,7 @@ int copyFile(const char *srcFilename, const char *destFilename)
 			exit(99);
 		}
 	}
-	if (bytesRead == -1)
+	if (bytesRead == -1 || srcFile == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
 		exit(98);
