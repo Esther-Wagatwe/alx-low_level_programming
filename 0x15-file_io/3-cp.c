@@ -24,7 +24,7 @@ int copyFile(const char *srcFilename, const char *destFilename)
 	destFile = open(destFilename, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (destFile == -1)
 	{
-		dprintf(2, "Error: Can't write to file %s\n", destFilename);
+		dprintf(2, "Error: Can't write to %s\n", destFilename);
 		exit(99);
 	}
 	while ((bytesRead = read(srcFile, buffer, BUFFER_SIZE)) > 0)
@@ -38,14 +38,19 @@ int copyFile(const char *srcFilename, const char *destFilename)
 	}
 	if (bytesRead == -1)
 	{
-		dprintf(2, "Error: Can't read from %s\n", srcFilename);
+		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
 		exit(98);
 	}
-	if (close(srcFile) == -1 || close(destFile) == -1)
+	if (close(srcFile) == -1)
 	{
-		dprintf(2, "Error: Can't close file descriptors\n");
+		dprintf(2, "Error: Can't close fd %d\n", srcFile);
 		exit(100);
 	}
+	 if (close(destFile) == -1)
+	 {
+		 dprintf(2, "Error: Can't close fd %d\n", destFile);
+		  exit(100);
+	 }
 
 	return (0); /*Return 0 on success*/
 }
