@@ -27,11 +27,6 @@ int copyFile(const char *srcFilename, const char *destFilename)
 		dprintf(2, "Error: Can't write to file %s\n", destFilename);
 		exit(99);
 	}
-	if (fchmod(destFile, 0664) == -1)
-	{
-		dprintf(2, "Error: Can't set permissions for file %s\n", destFilename);
-		exit(99);
-	}
 	while ((bytesRead = read(srcFile, buffer, BUFFER_SIZE)) > 0)
 	{
 		bytesWritten = write(destFile, buffer, bytesRead);
