@@ -8,7 +8,7 @@
  * Return: 0 on success, and exits with error codes on failure.
  */
 
-int copyFile(const char *destFilename, const char *srcFilename)
+int copyFile(const char *srcFilename, const char *destFilename)
 {
 	int srcFile, destFile;
 	char buffer[BUFFER_SIZE];
