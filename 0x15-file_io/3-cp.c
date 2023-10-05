@@ -21,13 +21,17 @@ int copyFile(const char *srcFilename, const char *destFilename)
 		exit(98);
 	}
 
-	destFile = open(destFilename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	destFile = open(destFilename, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (destFile == -1)
 	{
 		dprintf(2, "Error: Can't write to file %s\n", destFilename);
 		exit(99);
 	}
-
+	if (chmod(destFilename, 0664) == -1)
+	{
+		dprintf(2, "Error: Can't set permissions for file %s\n", destFilename);
+		exit(99);
+	}
 	while ((bytesRead = read(srcFile, buffer, BUFFER_SIZE)) > 0)
 	{
 		bytesWritten = write(destFile, buffer, bytesRead);
