@@ -30,7 +30,7 @@ int copyFile(const char *srcFilename, const char *destFilename)
 			exit(99);
 		}
 	}
-	if (srcFile == -1 || bytesRead == -1)
+	if (srcFile == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
 		exit(98);
