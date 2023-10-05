@@ -32,13 +32,13 @@ int copyFile(const char *srcFilename, const char *destFilename)
 		bytesWritten = write(destFile, buffer, bytesRead);
 		if (bytesWritten == -1)
 		{
-			dprintf(2, "Error: Can't write to file %s\n", destFilename);
+			dprintf(2, "Error: Can't write to %s\n", destFilename);
 			exit(99);
 		}
 	}
 	if (bytesRead == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", srcFilename);
+		dprintf(2, "Error: Can't read from %s\n", srcFilename);
 		exit(98);
 	}
 	if (close(srcFile) == -1 || close(destFile) == -1)
