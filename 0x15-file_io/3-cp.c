@@ -7,7 +7,7 @@
  * @file: name of file
  * Return: void
  */
-void err(int code, const char *err_message, const char * file)
+void err(int code, const char *err_message, const char *file)
 {
 	dprintf(STDERR_FILENO, err_message, file);
 	exit(code);
