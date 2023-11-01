@@ -3,7 +3,7 @@
 /**
  * err - prints the error message and exits with a given cde
  * @code: exit code
- * err_message: message to print
+ * @err_message: message to print
  * @file: name of file
  * Return: void
  */
