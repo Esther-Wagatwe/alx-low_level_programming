@@ -154,19 +154,19 @@ void elf_header(const char *file)
 			printf(" ");
 	}
 	printf("\n");
-	printf("  Class:                  %s\n",
+	printf("  Class:                             %s\n",
 	       elf_class_str(header.e_ident[EI_CLASS]));
-	printf("  Data:                   %s\n",
+	printf("  Data:                              %s\n",
 	       elf_data_str(header.e_ident[EI_DATA]));
-	printf("  Version:                %d (current)\n",
+	printf("  Version:                           %d (current)\n",
 	       header.e_ident[EI_VERSION]);
-	printf("  OS/ABI:                 %s\n",
+	printf("  OS/ABI:                            %s\n",
 	       elf_abi_version_str(header.e_ident[EI_OSABI]));
-	printf("  ABI Version:            %d\n",
+	printf("  ABI Version:                       %d\n",
 	       (header.e_ident[EI_ABIVERSION]));
-	printf("  Type:                   %s\n",
+	printf("  Type:                              %s\n",
 	       elf_type_str(header.e_type));
-	printf("  Entry point address:    0x%lx\n",
+	printf("  Entry point address:               0x%lx\n",
 	       header.e_entry);
 	close(file_descriptor);
 }
