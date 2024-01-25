@@ -12,9 +12,11 @@ void free_dlistint(dlistint_t *head)
 
 	if (head != NULL)
 	{
+		/* ensure that the head pointer is at the head of the list */
 		while (head->prev != NULL)
 			head = head->prev;
 	}
+	/* iterate through the linked list and free each node */
 	while ((new = head) != NULL)
 	{
 		head = head->next;
