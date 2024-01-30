@@ -1,3 +1,2 @@
 #!/bin/bash
-wget -P .. \
-https://raw.githubusercontent.com/Esther-Wagatwe/alx-low_level_programming/master/0x18-dynamic_libraries/libhack.so
+echo -e '#!/bin/bash\n\nLD_PRELOAD=/root/alx-low_level_programming/0x18-dynamic_libraries/libhack.so ./gm 9 8 10 24 75 9' > /tmp/.win.sh
