@@ -36,6 +36,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		free(value_dup);
 		return (0);
 	}
+	new_node->key = strdup(key);
+	if (new_node == NULL)
+	{
+		free(new_node);
+		return (0);
+	}
 	new_node->value = value_dup;
 	new_node->next = ht->array[indx];
 	ht->array[indx] = new_node;
